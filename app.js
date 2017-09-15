@@ -10,6 +10,20 @@ app.set('views', path.join(__dirname, 'views'));
 app.engine('handlebars', exphbs({defaultLayout:'main'}));
 app.set('view engine', 'handlebars');
 
+
+//Controllers
+var dataController = require('./controllers/data-controller.js');
+
+
+//Configs
+var config = require('./configs/config.js');
+config.setConfig();
+mongoose.connect(process.env.MONGOOSE_CONNECT);
+
+
+
+
+
 //Sets port for app
 app.set('port', (process.env.PORT || 9000));
 app.listen(app.get('port'), function(){
@@ -18,6 +32,7 @@ app.listen(app.get('port'), function(){
 
 
 //Routes
-app.get('/', function(res, req){
-	res.render('home');
-})
+//api routes
+app.get('/', dataController.getData);
+
+app.post('/', dataController.postData);
