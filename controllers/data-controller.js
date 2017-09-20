@@ -1,10 +1,9 @@
-
 //Set Models
 var Email = require('../models/email.js');
 
 
 //Set MiddleWare
-var middleware = require('./middlewares/middleware.js');
+var middleware = require('../middlewares/middleware.js');
 
 //COntrollers
 module.exports.getData = function(req, res) {
@@ -12,18 +11,14 @@ module.exports.getData = function(req, res) {
 		if(err){
 			return res.status(500).send("Couldn't rum the query");
 		}
-		res.render('form');
+		res.render('edit');
 	})
 }
 
 
 module.exports.postData = function(req, res) {
-	var email = new Email(req.email);
-	email.save(function(err) {
-		if(err) {
-			return res.status(500).send("couldn't save user");
-		}
+	var email = new Email(req.body);
+	middleware.screenshot(req.body.email)
 
-		res.render('index');
-	})
+	res.render('index');
 }

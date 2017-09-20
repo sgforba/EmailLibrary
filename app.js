@@ -2,6 +2,7 @@ var express = require('express');
 var path = require('path');
 var mongoose = require('mongoose');
 var exphbs = require('express-handlebars');
+var bodyParser = require('body-parser');
 
 var app = express();
 
@@ -12,7 +13,9 @@ app.set('view engine', 'handlebars');
 
 
 //Controllers
+var urlencodedParser = bodyParser.urlencoded({ extended: false });
 var dataController = require('./controllers/data-controller.js');
+
 
 
 //Configs
@@ -35,4 +38,4 @@ app.listen(app.get('port'), function(){
 //api routes
 app.get('/', dataController.getData);
 
-app.post('/', dataController.postData);
+app.post('/', urlencodedParser ,dataController.postData);
