@@ -1,5 +1,12 @@
+
+//Set Models
 var Email = require('../models/email.js');
 
+
+//Set MiddleWare
+var middleware = require('./middlewares/middleware.js');
+
+//COntrollers
 module.exports.getData = function(req, res) {
 	Email.find({}, function(err, people) {
 		if(err){
