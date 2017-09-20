@@ -17,6 +17,6 @@ module.exports.postData = function(req, res) {
 			return res.status(500).send("couldn't save user");
 		}
 
-		res.render('home');
+		res.render('index');
 	})
 }
