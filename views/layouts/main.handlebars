@@ -1,7 +1,35 @@
 <!DOCTYPE html>
 <html>
-<body>
+<head>
+	<meta charset="utf-8">
 
-{{{body}}}
+	<title>Library</title>
+	<link href="assets/styles/bootstrap.css" rel="stylesheet">
+	<script src="assets/scripts/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="assets/styles/styles.css?v=1.0">
+	<title>Library</title>
+</head>
+<body>
+	<header class="jumbotron subhead" id="overview">
+	    <div class="container">
+	       <h1>Built-Out Emailer Templates</h1>
+	       <p class="lead">List of emailer templates with HTML coding.</p>
+	    </div>
+    </header>
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<div class="span11 pagination-centered">
+				<section id="boxes">
+					<ul class="email-list-container thumbnails"></ul>
+				</section>
+			</div>
+		</div>
+	</div>
+
+	{{{body}}}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="assets/scripts/handlebars-v4.0.10.js"></script>
+<script src="assets/scripts/scripts.js"></script>	
 </body>
 </html>
