@@ -36,6 +36,7 @@ app.listen(app.get('port'), function(){
 
 //Routes
 //api routes
-app.get('/', dataController.getData);
+app.get('/', dataController.getIndex);
 
-app.post('/', urlencodedParser ,dataController.postData);
+app.get('/new', dataController.getEdit);
+app.post('/new', urlencodedParser ,dataController.postData);

@@ -6,13 +6,19 @@ var Email = require('../models/email.js');
 var middleware = require('../middlewares/middleware.js');
 
 //COntrollers
-module.exports.getData = function(req, res) {
+module.exports.getIndex = function(req, res) {
 	Email.find({}, function(err, people) {
 		if(err){
 			return res.status(500).send("Couldn't rum the query");
+		} else {
+			res.render('index');
 		}
-		res.render('edit');
+		
 	})
+}
+
+module.exports.getEdit = function(req, res) {
+	res.render('edit');
 }
 
 module.exports.postData = function(req, res) {
@@ -22,7 +28,10 @@ module.exports.postData = function(req, res) {
 		responsive: req.body.responsive,
 		client: req.body.client
 	}).save(function(err,doc){
-		if(err) res.json(err);
-		else res.send('saved');
+		if(err) {
+			res.json(err);
+		} else { 
+			res.redirect('index');
+		}	
 	});
 }
