@@ -15,10 +15,14 @@ module.exports.getData = function(req, res) {
 	})
 }
 
-
 module.exports.postData = function(req, res) {
-	var email = new Email(req.body);
-	middleware.screenshot(req.body.email)
-
-	res.render('index');
+	//middleware.screenshot(req.body.url);
+	new Email({
+		url: req.body.url,
+		responsive: req.body.responsive,
+		client: req.body.client
+	}).save(function(err,doc){
+		if(err) res.json(err);
+		else res.send('saved');
+	});
 }
