@@ -7,11 +7,13 @@ var middleware = require('../middlewares/middleware.js');
 
 //COntrollers
 module.exports.getIndex = function(req, res) {
-	Email.find({}, function(err, people) {
+	Email.find({}, function(err, docs) {
 		if(err){
 			return res.status(500).send("Couldn't rum the query");
 		} else {
-			res.render('index');
+			console.log(docs);
+			res.render('index', {email:docs});
+
 		}
 		
 	})
