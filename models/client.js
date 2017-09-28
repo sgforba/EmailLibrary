@@ -1,6 +1,6 @@
 var mongoose = require("mongoose");
 
 
-module.exports = client.model('Email', {
+module.exports = mongoose.model('Client', {
 	name: 'String',
 });
