@@ -24,7 +24,7 @@ module.exports.getEdit = function(req, res) {
 }
 
 module.exports.postData = function(req, res) {
-	//middleware.screenshot(req.body.url);
+	middleware.screenshot(req.body);
 	new Email({
 		url: req.body.url,
 		responsive: req.body.responsive,
@@ -33,7 +33,7 @@ module.exports.postData = function(req, res) {
 		if(err) {
 			res.json(err);
 		} else { 
-			res.redirect('index');
+			res.redirect('/');
 		}	
 	});
 }
