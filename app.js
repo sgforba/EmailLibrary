@@ -7,7 +7,8 @@ var bodyParser = require('body-parser');
 var app = express();
 
 //Sets views
-app.use(express.static(path.resolve('./public')));
+app.use(express.static(__dirname + '/public'));
+
 app.set('views', path.join(__dirname, 'views'));
 app.engine('handlebars', exphbs({defaultLayout:'main'}));
 app.set('view engine', 'handlebars');

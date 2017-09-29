@@ -1,3 +1,5 @@
+var crypto = require('crypto');
+
 //Set Models
 var Email = require('../models/email.js');
 
@@ -24,11 +26,16 @@ module.exports.getEdit = function(req, res) {
 }
 
 module.exports.postData = function(req, res) {
-	middleware.screenshot(req.body);
+	var file_id = crypto.randomBytes(5).toString('hex');
+	var file_name = req.body.client.toString() + file_id +'.png';
+	var file_path = '/public/images/screenshots/' + file_name;
+	middleware.screenshot(req.body.url, file_name);
+
 	new Email({
 		url: req.body.url,
 		responsive: req.body.responsive,
-		client: req.body.client
+		client: req.body.client,
+		image_link: file_path
 	}).save(function(err,doc){
 		if(err) {
 			res.json(err);
