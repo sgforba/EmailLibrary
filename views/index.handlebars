@@ -1,7 +1,11 @@
 <h1>Index</h1>
 
-<ul class="list">
+
 	{{#each email}}
-		<li>{{url}} | {{client}} <img src="{{image_link}}"></li>
+		<ul class="list">
+			<li>{{url}}</li>
+			<li>{{client}}</li>
+			<li><img src="{{image_link}}"></li>
+
+		</ul>
 	{{/each}}	
-</ul>
