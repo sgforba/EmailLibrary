@@ -19,14 +19,10 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false });
 var dataController = require('./controllers/data-controller.js');
 
 
-
 //Configs
 var config = require('./configs/config.js');
 config.setConfig();
 mongoose.connect(process.env.MONGOOSE_CONNECT);
-
-
-
 
 
 //Sets port for app
@@ -40,5 +36,7 @@ app.listen(app.get('port'), function(){
 //api routes
 app.get('/', dataController.getIndex);
 
-app.get('/new', dataController.getEdit);
-app.post('/new', urlencodedParser ,dataController.postData);
+app.get('/email/:id', dataController.getEmail);
+
+app.get('/new', dataController.getNew);
+app.post('/new', urlencodedParser ,dataController.postNew);
