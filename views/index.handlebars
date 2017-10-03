@@ -1,11 +1,29 @@
 <h1>Index</h1>
 
 
-	{{#each email}}
-		<ul class="list">
-			<li>{{url}}</li>
-			<li>{{client}}</li>
-			<li><img src="{{image_link}}"></li>
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span11 pagination-centered">
+			<ul class="thumbnails">
 
-		</ul>
-	{{/each}}	
+				{{#each email}}
+					<li class="span3 thumb">
+						<div class="thumbnail">
+							<img src="{{image_link}}">
+							 {{#if responsive}}
+							 <p>
+							 	Responsive
+							 </p>
+							 {{/if}}
+							<p>
+								<a href="{{url}}">Template Link</a>
+							</p>							
+						</div>
+
+					</li>
+				{{/each}}
+
+			</ul>
+		</div>
+	</div>
+</div>
